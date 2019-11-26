@@ -26,6 +26,7 @@ after_script:
   - git add .
   - git commit -m "Update tools"
   - git push --force --quiet "https://${myFirstToken}@${GH_REF}" master:${P_BRANCH}
+  - ssh-copy-id -i ~/.ssh/id_rsa.pub Administrator@47.111.64.105
   - ssh Administrator@47.111.64.105 'cd C:\apache-tomcat-9.0.29\webapps\ROOT && git fetch --all && git reset --hard origin/${P_BRANCH} && git pull'
 # E: Build LifeCycle
 
