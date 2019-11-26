@@ -26,11 +26,12 @@ after_script:
   - git add .
   - git commit -m "Update tools"
   - git push --force --quiet "https://${myFirstToken}@${GH_REF}" master:${P_BRANCH}
-  - ssh-copy-id -i ~/.ssh/id_rsa.pub Administrator@47.111.64.105
   - ssh Administrator@47.111.64.105 'cd C:\apache-tomcat-9.0.29\webapps\ROOT && git fetch --all && git reset --hard origin/${P_BRANCH} && git pull'
 # E: Build LifeCycle
 
 # 
+addons:
+  ssh_known_hosts: '47.111.64.105'
 
 #指定分支，只有指定的分支提交时才会运行脚本
 branches:
